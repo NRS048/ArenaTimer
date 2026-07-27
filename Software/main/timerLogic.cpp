@@ -4,7 +4,7 @@
 extern int current_time;
 extern int countdown_time;
 extern int currentState;
-extern int countdown;
+extern int countdown; //fixed countdown passthrough 07/27/2026 -N
 extern int scrollIndex;
 extern unsigned long lastScrollTime;
 extern bool readyRequired;
@@ -148,7 +148,7 @@ void handlePausedBlink() {
 }
 
 void startPreCountdown() {
-  countdown = 3;
+  countdown_active = countdown; //adjusted to allow passthrough from main.ino (previously overwrote with countdown = 3) 07/27/2026 -N
   scrollIndex = BORDER_LED_COUNT - 1;
   lastScrollTime = millis();
     
@@ -160,10 +160,10 @@ void startPreCountdown() {
       setDigit(0, 0, false);         
       setDigit(0, 49, false);        
       setColon();
-      setDigit(countdown, 101, true); 
+      setDigit(countdown_active, 101, true); 
       setDigit(0, 150, true);        
   } else {
-      setDigit(countdown, 0, false);  
+      setDigit(countdown_active, 0, false);  
       setDigit(0, 49, false);
       setColon();
       setDigit(0, 101, true);         
@@ -191,9 +191,9 @@ void handlePreCountdownAnimation() {
 
       if (scrollIndex < 0) {
         scrollIndex = BORDER_LED_COUNT - 1;
-        countdown--;
+        countdown_active--;
 
-        if (countdown <= 0) {
+        if (countdown_active <= 0) {
           transitionToMatch();
           return;
         }
@@ -204,10 +204,10 @@ void handlePreCountdownAnimation() {
             setDigit(0, 0, false);
             setDigit(0, 49, false);
             setColon();
-            setDigit(countdown, 101, true);
+            setDigit(countdown_active, 101, true);
             setDigit(0, 150, true);
         } else {
-            setDigit(countdown, 0, false);
+            setDigit(countdown_active, 0, false);
             setDigit(0, 49, false);
             setColon();
             setDigit(0, 101, true);

@@ -24,15 +24,15 @@ Preferences preferences;
 WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
-const char* apSSID = "MACROTimer";
-const char* apPassword = "MACROTimerPassword";
+const char* apSSID = "MACROTimer"; // adjusted SSID & passwords 07/27/2026 -N
+const char* apPassword = "MACROTimerPassword"; //
 
 int countdown_time = 120; // Default to 2 minutes (120 seconds)
 int current_time = countdown_time;
 bool timeSelState = false;
 bool blueReady = false;
 bool redReady = false;
-bool readyRequired = false; // default to requiring ready-up
+bool readyRequired = true; // default to requiring ready-up //adjusted for basic logic 07/27/2026 -N
 
 bool border_toggle = 1;
 
@@ -42,7 +42,7 @@ uint8_t redMAC[6], blueMAC[6], judgeMAC[6];
 bool redPaired = false, bluePaired = false, judgePaired = false;
 struct_message incoming;
 
-int countdown = 3; //number of seconds until match start
+int countdown = 5; //number of seconds until match start // adjusted to 5s from 3s per ref request 07/27/2026 -N
 
 int scrollIndex = 0;
 unsigned long lastScrollTime = 0;
