@@ -20,7 +20,7 @@ An open-source, ESP32-based event and match timer platform featuring wireless re
 2. **Access Point (AP) Mode:** If the network is unavailable (or during first-time setup), the timer switches to AP mode, broadcasting its own network:
    * **SSID:** `MACROTimer`
    * **Password:** `MACROTimerPassword`
-   * hopefully this is a private repo.
+   * Example Username & Password
 3. **Connecting to the UI:** * Connect your phone, tablet, or computer to the `TimerSetup` network.
    * Locate the timer's IP address in your device's network connection settings (this process varies by operating system).
    * Open a web browser and enter the IP address to access the control interface.
