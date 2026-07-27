@@ -1,4 +1,6 @@
-Below this point is likely AI generated, do not trust what is said, many physical features are promised on the PCB but are not at all implemented in the codebase. 
+Below this point is likely AI generated, do not trust what is said, many physical features are promised on the PCB but are not at all implemented in the codebase. -N
+
+--
 
 # ⏱️ Event Match Timer & Lockout System
 
