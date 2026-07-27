@@ -2,7 +2,7 @@
 #include <espnow.h>
 
 // --- CONFIGURATION ---
-const char* DEV_TYPE = "RedReady";//BlueReady
+const char* DEV_TYPE = "BlueReady";//BlueReady RedReady
 uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 typedef struct struct_message {
@@ -21,7 +21,11 @@ void setup() {
     WiFi.mode(WIFI_STA);
     WiFi.disconnect(); 
 
-    if (esp_now_init() != 0) {
+    int ifinit = esp_now_init();
+
+    delay(10);
+
+    if (ifinit != 0) { // from: if (esp_now_init() != 0) { // 07/26/2026
         Serial.println("ESP-NOW Init Failed");
         ESP.deepSleep(0); // Sleep and try again next press
         return;

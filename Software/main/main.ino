@@ -24,8 +24,8 @@ Preferences preferences;
 WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
-const char* apSSID = "TimerSetup";
-const char* apPassword = "12345678";
+const char* apSSID = "MACROTimer";
+const char* apPassword = "MACROTimerPassword";
 
 int countdown_time = 120; // Default to 2 minutes (120 seconds)
 int current_time = countdown_time;
