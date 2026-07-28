@@ -1,8 +1,10 @@
 #include <ESP8266WiFi.h>
 #include <espnow.h>
 
+#define Debug
+
 // --- CONFIGURATION ---
-const char* DEV_TYPE = "BlueReady";//BlueReady RedReady
+const char* DEV_TYPE = "RedReady";//BlueReady or RedReady
 uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 typedef struct struct_message {
@@ -14,19 +16,24 @@ struct_message myData;
 
 void setup() {
     // Start serial quickly for debugging
-    Serial.begin(115200);
-    Serial.println("\n[!] Wake detected. Initializing Shotgun Blast...");
-    
+    # ifdef Debug
+        Serial.begin(115200);
+        Serial.println("\n[!] Wake detected. Initializing Shotgun Blast...");
+    #endif
+
     // 1. WiFi Prep
     WiFi.mode(WIFI_STA);
     WiFi.disconnect(); 
 
     int ifinit = esp_now_init();
 
-    delay(10);
+    delay(30); // our added delay to assist suspected init errors. // 07/27/2026 -N
 
     if (ifinit != 0) { // from: if (esp_now_init() != 0) { // 07/26/2026
-        Serial.println("ESP-NOW Init Failed");
+        #ifdef Debug
+            Serial.println("ESP-NOW Init Failed");
+        #endif
+
         ESP.deepSleep(0); // Sleep and try again next press
         return;
     }
@@ -49,13 +56,16 @@ void setup() {
             esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
             delay(2); // very short gap
         }
-        
-        Serial.printf("Blasted Channel %d (3x)\n", ch);
+        #ifdef Debug
+            Serial.printf("Blasted Channel %d (3x)\n", ch);
+        #endif
     }
 
     // 4. Mission Complete
-    Serial.println("Sweep complete. Entering Deep Sleep (Infinite).");
-    
+    #ifdef Debug
+        Serial.println("Sweep complete. Entering Deep Sleep (Infinite).");
+    #endif
+
     // Give the last packet a tiny bit of time to leave the buffer 
     // before we yank the power from the radio.
     delay(50);
