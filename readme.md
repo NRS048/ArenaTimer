@@ -1,3 +1,7 @@
+Below this point is likely AI generated, do not trust what is said, many physical features are promised on the PCB but are not at all implemented in the codebase. -N
+
+---
+
 # ⏱️ Event Match Timer & Lockout System
 
 An open-source, ESP32-based event and match timer platform featuring wireless remote integration, with web interface.
@@ -14,8 +18,9 @@ An open-source, ESP32-based event and match timer platform featuring wireless re
 ### 2. Initial Wi-Fi & Web UI Setup
 1. **Boot Sequence:** Upon power-up, the display initializes with dashes (`--:--`) and the border will blink, indicating it is attempting to connect to the last saved Wi-Fi network.
 2. **Access Point (AP) Mode:** If the network is unavailable (or during first-time setup), the timer switches to AP mode, broadcasting its own network:
-   * **SSID:** `TimerSetup`
-   * **Password:** `12345678`
+   * **SSID:** `MACROTimer`
+   * **Password:** `MACROTimerPassword`
+   * Example Username & Password
 3. **Connecting to the UI:** * Connect your phone, tablet, or computer to the `TimerSetup` network.
    * Locate the timer's IP address in your device's network connection settings (this process varies by operating system).
    * Open a web browser and enter the IP address to access the control interface.
