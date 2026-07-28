@@ -42,7 +42,7 @@ uint8_t redMAC[6], blueMAC[6], judgeMAC[6];
 bool redPaired = false, bluePaired = false, judgePaired = false;
 struct_message incoming;
 
-int countdown = 5; //number of seconds until match start // adjusted to 5s from 3s per ref request 07/27/2026 -N
+int countdown = 5; //number of seconds until match start // adjusted to 5s from 3s per ref request 
 
 int scrollIndex = 0;
 unsigned long lastScrollTime = 0;
@@ -666,7 +666,7 @@ void loop() {
   webSocket.loop();
   ElegantOTA.loop(); 
 
-  if (currentMillis - lastFrameTime >= 20) {
+  if (currentMillis - lastFrameTime >= 2) { // from 20ms to 2ms, attempt to catch more of the wifi packets.
     lastFrameTime = currentMillis;
 
     checkAudioTimeout();

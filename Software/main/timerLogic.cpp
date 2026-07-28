@@ -37,6 +37,8 @@ bool tapoutAudioTriggeredThisCycle = false;
 extern CRGB digit_physical[];
 extern CRGB border_physical[];
 
+int countdown_active = 0;
+
 void handleConnectingAnimation() {
   static unsigned long lastAnimTime = 0;
   static bool borderOn = true;
