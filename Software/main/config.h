@@ -1,3 +1,7 @@
+// will hijack this file to be used as a variable dump (eg. countdown length, mode select, etc)
+
+// countdown go here = 5? i'm crying
+
 #ifndef CONFIG_H
 #define CONFIG_H
 
